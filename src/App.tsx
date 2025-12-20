@@ -32,7 +32,7 @@ function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center overflow-hidden">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center overflow-hiddenp-1">
               <img 
                 src="https://drive.google.com/uc?export=view&id=1mGBW1TF1u2dBUXMneZ6Qbt2FdMgxVCdk" 
                 alt="AgriCore Dynamics Logo" 
@@ -176,4 +176,8 @@ export default function App() {
       </div>
     </Router>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6bd6fb69b1c02846f6a3198ce42741d4fe26ffeb
