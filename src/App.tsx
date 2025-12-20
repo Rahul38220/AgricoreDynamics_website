@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Home } from './components/Home';
 import { Team } from './components/Team';
 import { Challenge } from './components/Challenge';
@@ -31,8 +32,12 @@ function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
-              <span className="text-white">AC</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center overflow-hidden">
+              <img 
+                src="https://drive.google.com/uc?export=view&id=1mGBW1TF1u2dBUXMneZ6Qbt2FdMgxVCdk" 
+                alt="AgriCore Dynamics Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-gray-900">AgriCore Dynamics</span>
           </Link>
@@ -43,13 +48,16 @@ function NavBar() {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`px-3 py-2 rounded-md transition-colors ${
+                className={`px-3 py-2 rounded-md transition-all duration-200 relative group ${
                   isActive(item.path)
                     ? 'bg-blue-100 text-blue-700'
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
                 {item.label}
+                {!isActive(item.path) && (
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-green-600 group-hover:w-full transition-all duration-300"></span>
+                )}
               </Link>
             ))}
           </div>
@@ -106,9 +114,9 @@ function Footer() {
           <div>
             <h3 className="mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-400">
-              <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
-              <li><Link to="/team" className="hover:text-white transition-colors">The Team</Link></li>
-              <li><Link to="/product" className="hover:text-white transition-colors">Product</Link></li>
+              <li><Link to="/" className="hover:text-white transition-colors duration-200">Home</Link></li>
+              <li><Link to="/team" className="hover:text-white transition-colors duration-200">The Team</Link></li>
+              <li><Link to="/product" className="hover:text-white transition-colors duration-200">Product</Link></li>
             </ul>
           </div>
           <div>
@@ -126,24 +134,44 @@ function Footer() {
   );
 }
 
+function PageTransition({ children }: { children: React.ReactNode }) {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0.95 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0.95 }}
+        transition={{ duration: 0.15, ease: 'easeInOut' }}
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 export default function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50 flex flex-col">
         <NavBar />
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/challenge" element={<Challenge />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/integration" element={<Integration />} />
-            <Route path="/integration/chemistry" element={<ChemistrySoil />} />
-            <Route path="/integration/mathematics" element={<Mathematics />} />
-            <Route path="/integration/physics" element={<Physics />} />
-            <Route path="/acknowledgement" element={<Acknowledgement />} />
-          </Routes>
-        </main>
+        <PageTransition>
+          <main className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/challenge" element={<Challenge />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/integration" element={<Integration />} />
+              <Route path="/integration/chemistry" element={<ChemistrySoil />} />
+              <Route path="/integration/mathematics" element={<Mathematics />} />
+              <Route path="/integration/physics" element={<Physics />} />
+              <Route path="/acknowledgement" element={<Acknowledgement />} />
+            </Routes>
+          </main>
+        </PageTransition>
         <Footer />
       </div>
     </Router>
