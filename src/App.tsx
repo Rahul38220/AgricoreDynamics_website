@@ -176,8 +176,4 @@ export default function App() {
       </div>
     </Router>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 6bd6fb69b1c02846f6a3198ce42741d4fe26ffeb
