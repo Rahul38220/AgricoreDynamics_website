@@ -11,6 +11,7 @@ import { ChemistrySoil } from './components/ChemistrySoil';
 import { Mathematics } from './components/Mathematics';
 import { Physics } from './components/Physics';
 import { Acknowledgement } from './components/Acknowledgement';
+import logoImg from './logo.png';
 
 function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,7 @@ function NavBar() {
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
               <img 
-                src="https://drive.google.com/uc?export=view&id=1YMvf8Lm1SWfRrVk_iYFDB6-3jaZqmyVE" 
+                src={logoImg} 
                 alt="AgriCore Dynamics Logo" 
                 className="max-w-full max-h-full object-contain"
               />
