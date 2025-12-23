@@ -37,7 +37,7 @@ function NavBar() {
               <img 
                 src={logoImg} 
                 alt="AgriCore Dynamics Logo" 
-                className="max-w-full max-h-full object-contain"
+                className="h-10 w-auto object-contain mix-blend-multiply"
               />
             </div>
             <span className="text-gray-900">AgriCore Dynamics</span>
