@@ -33,11 +33,11 @@ function NavBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-green-600 rounded-lg flex items-center justify-center">
+            <div className="w-12 h-12 border-2 border-black rounded-xl flex items-center justify-center overflow-hidden bg-white">
               <img 
                 src={logoImg} 
                 alt="AgriCore Dynamics Logo" 
-                className="h-10 w-auto object-contain mix-blend-multiply"
+                className="w-full h-full object-cover"
               />
             </div>
             <span className="text-gray-900">AgriCore Dynamics</span>
