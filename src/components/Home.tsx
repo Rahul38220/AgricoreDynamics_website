@@ -3,9 +3,8 @@ import { Sprout, Target, Users, Award } from 'lucide-react';
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 
-// Animation variants
 const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 }
 };
 
@@ -26,225 +25,174 @@ export function Home() {
   const ctaInView = useInView(ctaRef, { once: true, margin: "-100px" });
 
   return (
-    <div className="scroll-smooth">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 to-green-600 text-white overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1565564331571-c3a69a159944?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYXJtJTIwc3VucmlzZSUyMGFncmljdWx0dXJlfGVufDF8fHx8MTc2NjE1MDcwMXww&ixlib=rb-4.1.0&q=80&w=1080')`
-          }}
-        />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/75 to-green-600/75" />
-        
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <motion.div 
-            className="text-center"
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            transition={{ duration: 0.6 }}
-          >
-            <motion.h1 
-              className="mb-6 text-5xl md:text-6xl"
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              AgriCore Dynamics
-            </motion.h1>
-            <motion.p 
-              className="text-lg md:text-xl mb-8 text-blue-50"
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              ISPC Project 2025
-            </motion.p>
+    <div className="relative overflow-hidden bg-white">
+      {/* AESTHETIC LAYER: Background Mesh Blobs */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-100 rounded-full blur-[120px] opacity-50" />
+        <div className="absolute bottom-[10%] right-[-5%] w-[400px] h-[400px] bg-green-100 rounded-full blur-[120px] opacity-50" />
+      </div>
+
+      <div className="relative z-10">
+        {/* Hero Section */}
+        <section className="relative h-[90vh] flex items-center justify-center text-white overflow-hidden shadow-2xl">
+          <div 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 hover:scale-105"
+            style={{
+              backgroundImage: `url('https://images.unsplash.com/photo-1565564331571-c3a69a159944?auto=format&fit=crop&q=80&w=1920')`
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/60 via-blue-800/40 to-white" />
+          
+          <div className="relative max-w-7xl mx-auto px-4 text-center">
             <motion.div 
-              className="bg-white/10 backdrop-blur-sm rounded-lg p-6 mb-8 border border-white/20"
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+              transition={{ duration: 0.8 }}
             >
-              <p className="text-lg md:text-xl">
-                Empowering farmers with real-time soil intelligence to optimize crop nutrition and maximize yields.
-              </p>
-            </motion.div>
-            <motion.div
-              variants={fadeInUp}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <Link
-                to="/product"
-                className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
+              <motion.span 
+                className="inline-block px-4 py-1.5 mb-6 text-sm font-medium tracking-wider uppercase bg-white/20 backdrop-blur-md rounded-full border border-white/30"
+                variants={fadeInUp}
               >
-                Discover NutriScan Pro
-              </Link>
+                ISPC Project 2025
+              </motion.span>
+              <motion.h1 
+                className="mb-6 text-6xl md:text-8xl font-bold tracking-tight"
+                variants={fadeInUp}
+                transition={{ delay: 0.2 }}
+              >
+                AgriCore<span className="text-green-400">.</span>
+              </motion.h1>
+              
+              <motion.div 
+                className="max-w-2xl mx-auto bg-white/10 backdrop-blur-lg rounded-2xl p-8 mb-10 border border-white/20 shadow-2xl"
+                variants={fadeInUp}
+                transition={{ delay: 0.4 }}
+              >
+                <p className="text-xl md:text-2xl font-light leading-relaxed">
+                  Empowering farmers with <span className="font-semibold text-green-300">real-time soil intelligence</span> to optimize nutrition and maximize yields.
+                </p>
+              </motion.div>
+
+              <motion.div variants={fadeInUp} transition={{ delay: 0.6 }}>
+                <Link
+                  to="/product"
+                  className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-blue-600 transition-all duration-200 bg-white font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:bg-blue-50 shadow-xl"
+                >
+                  Discover NutriScan Pro
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* About ISPC */}
-      <section className="py-16 bg-white" ref={aboutRef}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12"
-            initial="hidden"
-            animate={aboutInView ? "visible" : "hidden"}
-            variants={fadeInUp}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="mb-4">About ISPC</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto mb-6"></div>
-          </motion.div>
-          <motion.div 
-            className="max-w-3xl mx-auto"
-            initial="hidden"
-            animate={aboutInView ? "visible" : "hidden"}
-            variants={fadeInUp}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              The Integrated Science Project Competition (ISPC) challenges students to develop innovative solutions that integrate mathematics, science, and computer science. Our mission is to apply interdisciplinary knowledge to solve real-world problems through creative problem-solving and scientific inquiry.
-            </p>
-            <p className="text-gray-700 text-lg leading-relaxed">
-              This project exemplifies the integration of chemistry, soil science, mathematical algorithms, and embedded systems engineering to address critical challenges in modern agriculture.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Project Hook */}
-      <section className="py-16 bg-gradient-to-r from-green-50 to-blue-50" ref={hookRef}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="bg-white rounded-xl shadow-lg p-8 md:p-12 hover:shadow-xl transition-shadow duration-300"
-            initial="hidden"
-            animate={hookInView ? "visible" : "hidden"}
-            variants={fadeInUp}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="flex items-start space-x-4">
-              <div className="bg-gradient-to-br from-blue-600 to-green-600 rounded-lg p-3 flex-shrink-0">
-                <Target className="text-white" size={32} />
+        {/* About ISPC - Updated with Glass effect */}
+        <section className="py-24" ref={aboutRef}>
+          <div className="max-w-5xl mx-auto px-4">
+            <motion.div 
+              className="bg-white/40 backdrop-blur-md border border-gray-100 rounded-3xl p-12 shadow-xl"
+              initial="hidden"
+              animate={aboutInView ? "visible" : "hidden"}
+              variants={fadeInUp}
+            >
+              <div className="text-center mb-10">
+                <h2 className="text-4xl font-bold text-gray-900 mb-4">The Mission</h2>
+                <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto rounded-full"></div>
               </div>
-              <div>
-                <h2 className="mb-4">The Challenge We&apos;re Solving</h2>
-                <p className="text-gray-700 text-lg leading-relaxed">
-                  Traditional soil testing methods are expensive, time-consuming, and inaccessible to small-scale farmers. We&apos;ve developed an affordable, real-time NPK and pH monitoring system that puts precision agriculture in the hands of every farmer, enabling data-driven decisions that increase yields and reduce waste.
+              <div className="grid md:grid-cols-2 gap-10 text-gray-700 text-lg leading-relaxed">
+                <p>
+                  The Integrated Science Project Competition (ISPC) challenges students to bridge the gap between theory and reality. Our project is a symphony of <span className="text-blue-600 font-medium">Chemistry, Physics, and Data Science.</span>
+                </p>
+                <p>
+                  By digitizing soil health, we aren't just building a tool; we are building a sustainable future for agriculture where every drop of fertilizer is used with mathematical precision.
                 </p>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+            </motion.div>
+          </div>
+        </section>
 
-      {/* Key Features Grid */}
-      <section className="py-16 bg-white" ref={featuresRef}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="text-center mb-12"
-            initial="hidden"
-            animate={featuresInView ? "visible" : "hidden"}
-            variants={fadeInUp}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="mb-4">Why NutriScan Pro?</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-green-600 mx-auto"></div>
-          </motion.div>
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-            initial="hidden"
-            animate={featuresInView ? "visible" : "hidden"}
-            variants={fadeIn}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+        {/* Project Hook - Sleeker Card */}
+        <section className="py-16" ref={hookRef}>
+          <div className="max-w-7xl mx-auto px-4">
             <motion.div 
-              className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
+              className="bg-gradient-to-br from-gray-900 to-blue-900 rounded-[2rem] shadow-2xl p-10 md:p-16 text-white relative overflow-hidden"
+              initial="hidden"
+              animate={hookInView ? "visible" : "hidden"}
+              variants={fadeInUp}
             >
-              <motion.div 
-                className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
-                whileHover={{ rotate: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Sprout className="text-white" size={32} />
-              </motion.div>
-              <h3 className="mb-3 text-blue-900">Real-Time Monitoring</h3>
-              <p className="text-gray-700">
-                Instant NPK and pH readings directly from your soil, delivered to your smartphone.
-              </p>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/10 blur-[80px] rounded-full" />
+              <div className="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-5 border border-white/20">
+                  <Target className="text-green-400" size={48} />
+                </div>
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold mb-6">The Global Challenge</h2>
+                  <p className="text-blue-100 text-xl leading-relaxed font-light">
+                    Traditional soil testing is stuck in the past—slow, expensive, and distant. 
+                    <span className="text-white font-semibold"> NutriScan Pro</span> changes the equation by providing lab-grade results in seconds, right in the palm of your hand.
+                  </p>
+                </div>
+              </div>
             </motion.div>
-            <motion.div 
-              className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <motion.div 
-                className="bg-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
-                whileHover={{ rotate: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Award className="text-white" size={32} />
-              </motion.div>
-              <h3 className="mb-3 text-green-900">Affordable Technology</h3>
-              <p className="text-gray-700">
-                Bringing laboratory-grade analysis to farmers at a fraction of traditional costs.
-              </p>
-            </motion.div>
-            <motion.div 
-              className="bg-gradient-to-br from-blue-50 to-green-100 rounded-xl p-6 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <motion.div 
-                className="bg-gradient-to-br from-blue-600 to-green-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
-                whileHover={{ rotate: 5 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Users className="text-white" size={32} />
-              </motion.div>
-              <h3 className="mb-3 text-gray-900">User-Friendly Interface</h3>
-              <p className="text-gray-700">
-                Simple mobile app with actionable crop recommendations and insights.
-              </p>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-br from-blue-600 to-green-600 text-white" ref={ctaRef}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial="hidden"
-            animate={ctaInView ? "visible" : "hidden"}
-            variants={fadeInUp}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="mb-4">Explore Our Project</h2>
-            <p className="text-xl mb-8 text-blue-50">
-              Learn more about our team, the science behind our solution, and the technology that makes it possible.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                to="/team"
-                className="bg-white text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
-              >
-                Meet the Team
-              </Link>
-              <Link
-                to="/integration"
-                className="bg-white/10 backdrop-blur-sm text-white border border-white/30 px-6 py-3 rounded-lg hover:bg-white/20 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5"
-              >
-                Scientific Foundations
-              </Link>
+        {/* Key Features - Modern Cards */}
+        <section className="py-24" ref={featuresRef}>
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Core Innovation</h2>
+              <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full"></div>
             </div>
-          </motion.div>
-        </div>
-      </section>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { icon: Sprout, title: "Real-Time Intelligence", color: "blue", desc: "Instant NPK & pH data streamed via Bluetooth to our mobile ecosystem." },
+                { icon: Award, title: "Precision Engineering", color: "green", desc: "Advanced sensors calibrated for extreme accuracy in diverse soil types." },
+                { icon: Users, title: "Citizen Science", color: "indigo", desc: "An intuitive interface designed for farmers, researchers, and students alike." }
+              ].map((item, i) => (
+                <motion.div 
+                  key={i}
+                  className="bg-white p-8 rounded-3xl border border-gray-100 shadow-lg hover:shadow-2xl transition-all group"
+                  whileHover={{ y: -10 }}
+                  initial="hidden"
+                  animate={featuresInView ? "visible" : "hidden"}
+                  variants={fadeInUp}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <div className={`w-14 h-14 bg-${item.color}-100 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                    <item.icon className={`text-${item.color}-600`} size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section - Minimalist & Bold */}
+        <section className="py-24" ref={ctaRef}>
+          <div className="max-w-7xl mx-auto px-4">
+            <motion.div 
+              className="bg-blue-600 rounded-[3rem] p-12 md:p-20 text-center text-white shadow-2xl relative overflow-hidden"
+              initial="hidden"
+              animate={ctaInView ? "visible" : "hidden"}
+              variants={fadeInUp}
+            >
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">Ready to see it in action?</h2>
+              <div className="flex flex-wrap justify-center gap-6 relative z-10">
+                <Link to="/team" className="bg-white text-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-lg">
+                  Meet the Team
+                </Link>
+                <Link to="/integration" className="bg-transparent border-2 border-white/40 backdrop-blur-md px-10 py-4 rounded-xl font-bold hover:bg-white/10 transition-all">
+                  The Science
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
